@@ -6,10 +6,6 @@ class FrasesSchema(SCBaseModel):
     quote: str
     ep_id: Optional[int] = None
 
-# class FrasesSchemaCreate(SCBaseModel):
-#     quote: str
-#     ep_id: Optional[int] = None
-
 
     class Config:
         orm_mode = True
