@@ -4,6 +4,7 @@ import axios from 'axios'
 import GetEpisodio from './components/getEpisodio'
 import PostEpisodio from './components/postEpisodio'
 import DeleteEpisodio from './components/deleteEpisodio'
+import PutEpisodio from './components/putEpisodio'
 
 function App() {
   return (
@@ -12,7 +13,13 @@ function App() {
 
       <PostEpisodio/>
 
-      <DeleteEpisodio/>
+      <DeleteEpisodio/> 
+
+      <PutEpisodio/>
+
+
+
+
 
     </>
   )
