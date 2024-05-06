@@ -13,11 +13,12 @@ export default function PutEpisodio() {
         try {
             const response = await axios.get(`http://127.0.0.1:8000/api/v1/episodio/${episodioId}`);
             setEpisodio(response.data.episodio);
-            setSucesso(false); 
+            setSucesso(true); 
             setErro(null); 
         } catch (erro) {
             setErro(erro.response.status);
             console.error(erro);
+            setSucesso(false); 
         }
     };
 

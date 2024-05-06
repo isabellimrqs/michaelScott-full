@@ -2,18 +2,21 @@ import axios from "axios";
 import { useState } from "react";
 
 export default function PostFrase() {
-    const [episodio, setEpisodio] = useState('');
+    const [frase, setFrase] = useState('');
+    const [epId, setEpId] = useState('');
     const [erro, setErro] = useState(null);
     const [sucesso, setSucesso] = useState(false);
 
-    const dados = {
-        'episodio': episodio
-    };
-
     const criar = async () => {
         try {
+            const dados = {
+                'quote': frase,
+                'ep_id': epId
+            };
+
             const response = await axios.post('http://127.0.0.1:8000/api/v1/frase/', dados);
-            setEpisodio('');
+            setFrase('');
+            setEpId('');
             setSucesso(true); 
         } catch (erro) {
             setErro(erro.response.status);
@@ -23,18 +26,23 @@ export default function PostFrase() {
 
     return (
         <div>
-            <p>POST Episódio</p>
+            <p>POST Frase</p>
             <input
-                placeholder="Episódio Ex: T1E1"
-                onChange={(e) => setEpisodio(e.target.value)}
-                value={episodio}
+                placeholder="Frase"
+                onChange={(e) => setFrase(e.target.value)}
+                value={frase}
+            />
+            <input
+                placeholder="ID do episódio"
+                onChange={(e) => setEpId(e.target.value)}
+                value={epId}
             />
             <button onClick={criar}>
                 <p>Criar</p>
             </button>
 
-            {sucesso && <p>Criado! com sucesso!</p>}
-            {erro && <p>Esse episódio não existe!</p>}
+            {sucesso && <p>Criado com sucesso!</p>}
+            {erro && <p>Ocorreu um erro ao criar a frase.</p>}
         </div>
     );
 }

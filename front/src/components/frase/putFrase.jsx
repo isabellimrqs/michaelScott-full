@@ -2,74 +2,47 @@ import axios from "axios";
 import { useState } from "react";
 
 export default function PutFrase() {
-    const [episodioId, setEpisodioID] = useState('');
-    const [episodio, setEpisodio] = useState('');
+    const [frase, setFrase] = useState('');
+    const [epId, setEpId] = useState('');
     const [erro, setErro] = useState(null);
     const [sucesso, setSucesso] = useState(false);
-    const [novoEpisodio, setNovoEpisodio] = useState('');
-    const [sucessoAtualizar, setSucessoAtualizar] = useState(false);
 
-    const buscar = async () => {
-        try {
-            const response = await axios.get(`http://127.0.0.1:8000/api/v1/frase/${episodioId}`);
-            setEpisodio(response.data.episodio);
-            setSucesso(false); 
-            setErro(null); 
-        } catch (erro) {
-            setErro(erro.response.status);
-            console.error(erro);
-        }
-    };
-
-    const atualizar = async () => {
+    const criar = async () => {
         try {
             const dados = {
-                'id': episodioId,
-                'episodio': novoEpisodio 
+                'quote': frase,
+                'ep_id': epId
             };
 
-            const response = await axios.put(`http://127.0.0.1:8000/api/v1/frase/${episodioId}`, dados);
-            setEpisodio('');
-            setNovoEpisodio(''); 
-            setSucessoAtualizar(true);
+            const response = await axios.post('http://127.0.0.1:8000/api/v1/frase/', dados);
+            setFrase('');
+            setEpId('');
+            setSucesso(true); 
         } catch (erro) {
             setErro(erro.response.status);
-            console.error(erro);
+            console.log(erro);
         }
     };
 
     return (
         <div>
-            <p>PUT Episódio</p>
-
+            <p>POST Frase</p>
             <input
-                placeholder="ID"
-                onChange={(e) => setEpisodioID(e.target.value)}
-                value={episodioId}
+                placeholder="Frase"
+                onChange={(e) => setFrase(e.target.value)}
+                value={frase}
             />
-            <button onClick={buscar}>
-                <p>Buscar</p>
+            <input
+                placeholder="ID do episódio"
+                onChange={(e) => setEpId(e.target.value)}
+                value={epId}
+            />
+            <button onClick={criar}>
+                <p>Criar</p>
             </button>
 
-            <p>{episodio}</p>
-
-            {erro && <p>Esse episódio não existe!</p>}
-
-            {sucesso && (
-                <div>
-                    <input
-                        type="text"
-                        placeholder="Altere o episódio aqui"
-                        value={novoEpisodio}
-                        onChange={(e) => setNovoEpisodio(e.target.value)}
-                    />
-                    <button onClick={atualizar}>
-                        <p>Atualizar</p>
-                    </button>
-                </div>
-            )}
-
-            {sucessoAtualizar && <p>Atualizado com sucesso!</p>}
+            {sucesso && <p>Criado com sucesso!</p>}
+            {erro && <p>Ocorreu um erro ao criar a frase.</p>}
         </div>
     );
 }

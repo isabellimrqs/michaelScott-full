@@ -7,8 +7,6 @@ export default function DeleteEpisodio() {
     const [erro, setErro] = useState(null);
     const [sucesso, setSucesso] = useState(false);
 
-  
-
     const deletar = async () => {
         try {
             const response = await axios.delete('http://127.0.0.1:8000/api/v1/episodio/'+ episodioId);

@@ -2,15 +2,16 @@ import axios from "axios";
 import { useState } from "react";
 
 export default function GetFrase(){
-    const [episodioId, setEpisodioID] = useState('')
-    const [episodio, setEpisodio] = useState('')
-    const [erro, setErro] = useState(null)
+    const [id, setId] = useState('')
+    const [quote, setQuote] = useState('')
+    const [epId, setEpId] = useState('')
+    const [erro, setErro] = useState(null);
 
     const buscar = async ()=>{
         try {
-            const response = await axios.get('http://127.0.0.1:8000/api/v1/frase/'+episodioId)
-            setEpisodio(response.data.episodio)
-            console.log(episodio)
+            const response = await axios.get('http://127.0.0.1:8000/api/v1/frase/'+id)
+            setQuote(response.data.quote)
+            setEpId(response.data.ep_id)
         }catch(erro){
             setErro(erro.response.status)
             console.log(erro)
@@ -20,20 +21,21 @@ export default function GetFrase(){
     return(
         <div>
 
-            <p>GET Episódio</p>
+            <p>GET Frase</p>
 
             <input
                 placeholder="ID"
-                onChange={(e)=>setEpisodioID(e.target.value)}
-                value={episodioId}
+                onChange={(e)=>setId(e.target.value)}
+                value={id}
             />
             <button onClick={buscar}>
                 <p>Buscar</p>
             </button>
 
-            <p>{episodio}</p>
+            <p>{quote}</p>
+            <p>{epId}</p>
             
-
+        
             {erro && <p>Esse episódio não existe!</p>}
 
         </div>

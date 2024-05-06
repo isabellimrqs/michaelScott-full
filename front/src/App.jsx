@@ -1,28 +1,33 @@
-import { useState } from 'react'
-import './App.css'
-import axios from 'axios'
-import GetEpisodio from './components/episodio/getEpisodio'
-import PutEpisodio from './components/episodio/putEpisodio'
-import PostEpisodio from './components/episodio/postEpisodio'
-import DeleteEpisodio from "./components/episodio/deleteEpisodio"
+import { useState } from "react";
+import "./App.css";
+import axios from "axios";
+import GetEpisodio from "./components/episodio/getEpisodio";
+import PutEpisodio from "./components/episodio/putEpisodio";
+import PostEpisodio from "./components/episodio/postEpisodio";
+import DeleteEpisodio from "./components/episodio/deleteEpisodio";
+// import GetEpisodios from './components/episodio/getEpisodios'
+import GetFrase from "./components/frase/getFrase";
+import DeleteFrase from "./components/frase/deleteFrase";
+import PostFrase from "./components/frase/postFrase";
 
 function App() {
   return (
     <>
-      <GetEpisodio/>
+      <PostEpisodio />
+      <GetEpisodio />
+      <PutEpisodio />
+      <DeleteEpisodio />
 
-      <PostEpisodio/>
+      {/* <GetEpisodios/> em manutenção...*/}
 
-      <DeleteEpisodio/> 
-
-      <PutEpisodio/>
-
-
+      <PostFrase/>
+      <GetFrase />
+      <DeleteFrase/>
 
 
 
     </>
-  )
+  );
 }
 
-export default App
+export default App;
