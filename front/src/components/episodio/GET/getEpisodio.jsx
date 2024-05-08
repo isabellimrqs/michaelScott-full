@@ -18,7 +18,7 @@ export default function GetEpisodio(){
     }
 
     return(
-        <div>
+        <div className="container">
 
             <p>GET Episódio</p>
 
