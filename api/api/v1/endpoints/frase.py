@@ -49,12 +49,14 @@ async def put_frase(frase_id: int, frase: FrasesSchema, db: AsyncSession = Depen
 
         if frase_up:
             frase_up.quote = frase.quote
+            frase_up.ep_id = frase.ep_id  
 
             await session.commit()
             return frase_up
         
         else:
             raise HTTPException(detail="Frase não encontrada", status_code=status.HTTP_404_NOT_FOUND)
+
         
 @router.delete("/{frase_id}", status_code=status.HTTP_204_NO_CONTENT)
 async def delete_frase(frase_id: int, db: AssertionError = Depends(get_session)):
