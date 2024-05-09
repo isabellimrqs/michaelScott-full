@@ -1,5 +1,7 @@
 import axios from "axios";
 import { useState } from "react";
+import styles from './getEpisodio.module.css'
+
 
 export default function GetEpisodio(){
     const [episodioId, setEpisodioID] = useState('')
@@ -18,16 +20,16 @@ export default function GetEpisodio(){
     }
 
     return(
-        <div className="container">
+        <div className={styles.container}>
 
-            <p>GET Episódio</p>
+            <p>Busque por um episódio: </p>
 
             <input
                 placeholder="ID"
                 onChange={(e)=>setEpisodioID(e.target.value)}
                 value={episodioId}
             />
-            <button onClick={buscar}>
+            <button className={styles.button} onClick={buscar}>
                 <p>Buscar</p>
             </button>
 

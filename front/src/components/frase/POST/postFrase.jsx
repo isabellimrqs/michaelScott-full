@@ -1,5 +1,6 @@
 import axios from "axios";
 import { useState } from "react";
+import styles from './postFrase.module.css'
 
 export default function PostFrase() {
     const [frase, setFrase] = useState('');
@@ -25,19 +26,20 @@ export default function PostFrase() {
     };
 
     return (
-        <div>
-            <p>POST Frase</p>
+        <div className={styles.container}>
+            <p>Crie uma nova frase: </p>
             <input
                 placeholder="Frase"
                 onChange={(e) => setFrase(e.target.value)}
                 value={frase}
             />
+            
             <input
                 placeholder="ID do episódio"
                 onChange={(e) => setEpId(e.target.value)}
                 value={epId}
             />
-            <button onClick={criar}>
+            <button className={styles.button} onClick={criar}>
                 <p>Criar</p>
             </button>
 

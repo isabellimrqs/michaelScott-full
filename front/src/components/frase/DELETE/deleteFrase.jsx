@@ -1,5 +1,6 @@
 import axios from "axios";
 import { useState } from "react";
+import styles from './deleteFrase.module.css'
 
 export default function DeleteFrase() {
     const [id, setId] = useState('');
@@ -22,14 +23,14 @@ export default function DeleteFrase() {
     };
 
     return (
-        <div>
-            <p>DELETE Frase</p>
+        <div className={styles.container}>
+            <p>Exclua uma frase: </p>
             <input
                 placeholder="ID"
                 onChange={(e) => setId(e.target.value)}
                 value={id}
             />
-            <button onClick={deletar}>
+            <button className={styles.button} onClick={deletar}>
                 <p>Excluir</p>
             </button>
 

@@ -1,5 +1,6 @@
 import axios from "axios";
 import { useState } from "react";
+import styles from './deleteEpisodio.module.css'
 
 export default function DeleteEpisodio() {
     const [episodioId, setEpisodioId] = useState('');
@@ -20,14 +21,14 @@ export default function DeleteEpisodio() {
     };
 
     return (
-        <div>
-            <p>DELETE Episódio</p>
+        <div className={styles.container}>
+            <p>Exclua um episódio: </p>
             <input
                 placeholder="ID"
                 onChange={(e) => setEpisodioId(e.target.value)}
                 value={episodioId}
             />
-            <button onClick={deletar}>
+            <button className={styles.button} onClick={deletar}>
                 <p>Excluir</p>
             </button>
 

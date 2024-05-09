@@ -1,5 +1,6 @@
 import axios from "axios";
 import { useState } from "react";
+import styles from './getFrase.module.css'
 
 export default function GetFrase(){
     const [id, setId] = useState('')
@@ -19,16 +20,16 @@ export default function GetFrase(){
     }
 
     return(
-        <div>
+        <div className={styles.container}>
 
-            <p>GET Frase</p>
+            <p>Busque por uma frase: </p>
 
             <input
-                placeholder="ID"
+                placeholder="ID da frase"
                 onChange={(e)=>setId(e.target.value)}
                 value={id}
             />
-            <button onClick={buscar}>
+            <button className={styles.button} onClick={buscar}>
                 <p>Buscar</p>
             </button>
 

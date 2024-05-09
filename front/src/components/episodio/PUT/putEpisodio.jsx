@@ -1,5 +1,6 @@
 import axios from "axios";
 import { useState } from "react";
+import styles from './putEpisodio.module.css'
 
 export default function PutEpisodio() {
     const [episodioId, setEpisodioID] = useState('');
@@ -40,15 +41,15 @@ export default function PutEpisodio() {
     };
 
     return (
-        <div>
-            <p>PUT Episódio</p>
+        <div className={styles.container}>
+            <p>Atualize um episódio: </p>
 
             <input
                 placeholder="ID"
                 onChange={(e) => setEpisodioID(e.target.value)}
                 value={episodioId}
             />
-            <button onClick={buscar}>
+            <button className={styles.button} onClick={buscar}>
                 <p>Buscar</p>
             </button>
 
@@ -57,16 +58,14 @@ export default function PutEpisodio() {
             {erro && <p>Esse episódio não existe!</p>}
 
             {sucesso && (
-                <div>
+                <div className={styles.container}>
                     <input
                         type="text"
                         placeholder="Altere o episódio aqui"
                         value={novoEpisodio}
                         onChange={(e) => setNovoEpisodio(e.target.value)}
                     />
-                    <button onClick={atualizar}>
-                        <p>Atualizar</p>
-                    </button>
+                    <button className={styles.button} onClick={atualizar}>Atualizar</button>
                 </div>
             )}
 

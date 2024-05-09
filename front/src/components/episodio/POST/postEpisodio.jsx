@@ -1,5 +1,6 @@
 import axios from "axios";
 import { useState } from "react";
+import styles from './postEpisodio.module.css'
 
 export default function PostEpisodio() {
     const [episodio, setEpisodio] = useState('');
@@ -22,14 +23,14 @@ export default function PostEpisodio() {
     };
 
     return (
-        <div>
-            <p>POST Episódio</p>
+        <div className={styles.container}>
+            <p>Crie um novo episódio: </p>
             <input
                 placeholder="Episódio Ex: T1E1"
                 onChange={(e) => setEpisodio(e.target.value)}
                 value={episodio}
             />
-            <button onClick={criar}>
+            <button className={styles.button} onClick={criar}>
                 <p>Criar</p>
             </button>
 

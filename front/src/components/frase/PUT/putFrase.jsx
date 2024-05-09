@@ -1,5 +1,6 @@
 import axios from "axios";
 import { useState } from "react";
+import styles from './putFrase.module.css'
 
 export default function PutFrase() {
     const [id, setId] = useState('');
@@ -45,14 +46,14 @@ export default function PutFrase() {
     
 
     return (
-        <div>
-            <p>PUT Frase</p>
+        <div className={styles.container}>
+            <p>Atualize uma frase: </p>
             <input
                 placeholder="ID"
                 onChange={(e) => setId(e.target.value)}
                 value={id}
             />
-            <button onClick={buscar}>
+            <button className={styles.button} onClick={buscar}>
                 <p>Buscar</p>
             </button>
             {sucesso && (
@@ -63,7 +64,7 @@ export default function PutFrase() {
             )}
             {erro && <p>Esse episódio não existe!</p>}
             {sucesso && (
-                <div>
+                <div className={styles.container}>
                     <input
                         type="text"
                         placeholder="Altere a frase aqui"
@@ -77,7 +78,7 @@ export default function PutFrase() {
                         onChange={(e) => setNovoEpId(e.target.value)}
                        
                     />
-                    <button onClick={atualizar}>
+                    <button className={styles.button} onClick={atualizar}>
                         <p>Atualizar</p>
                     </button>
                 </div>
